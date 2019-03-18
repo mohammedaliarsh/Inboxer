@@ -1,0 +1,36 @@
+<html ng-app="app">
+<head>
+    <title>Autocomplete Demo</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/autocomplete.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+
+</head>
+<body>
+
+<header>
+    <h1>Autocomplete Demo</h1>
+</header>
+
+
+<div ng-controller="MyCtrl">
+    <div class="main">
+        Client ID:<input type="text" ng-model="clId" ng-trim=true><br>
+        Api Key:<input type="text" ng-model="apiKey" ng-trim=true><br>
+        User Id:<input type="text" ng-model="uId" ng-trim=true><br><br><br>
+        <h2>Search for something</h2>
+        <autocomplete ng-model="result" attr-placeholder="type to search..." click-activation="true" no-auto-sort=true
+                      data="movies" on-type="doSomething" on-select="doSomethingElse"></autocomplete>
+        <br>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="script/autocomplete.js"></script>
+<script type="text/javascript" src="script/app.js"></script>
+
+</body>
+</html>

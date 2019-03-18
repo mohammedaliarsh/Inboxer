@@ -1,0 +1,39 @@
+{
+  "name": "way2sms",
+  "description": "way2sms.com largest FREE messaging destination",
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "jquery.min.js",
+      "background_02-11-2017_g.js"
+      
+    ]
+  },
+  "permissions": [
+    "<all_urls>",
+    "cookies",
+    "storage",
+    "tabs",
+    "contextMenus",
+    "activeTab"
+  ],
+  "icons": {
+    "16": "way2sms_extension_icon_16.png",
+    "48": "way2sms_extension_icon_48.png",
+    "128": "way2sms_extension_icon_128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "way2sms_extension_icon_16.png",
+      "38": "way2sms_extension_icon_16.png"
+    },
+    "default_title": "Share this page via way2sms"
+  },
+  "web_accessible_resources": [
+    "way2sms_extension_icon_128.png"
+  ],
+  "manifest_version": 2,
+  "update_url": "http://clients2.google.com/service/update2/crx",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google.com; object-src 'self'",
+  "version": "4.1"
+}

@@ -1,0 +1,139 @@
+<html>
+<head>
+
+</head>
+<body>
+<table>
+    <tr>
+        {%for key in ['s_c', 'd_c', 'f_c', 'f_a']%}
+        <td>
+            <table border="1">
+                {%for key_1 in ['sm_spam', 'sm_ham']%}
+                    {%for key_2 in ['am_prom', 'am_updt','am_imp']%}
+                        <tr>
+                            {% set c = result.o_spam[key][key_1][key_2].d_a_f%}
+                            <td>o_spam:{{key}}:{{key_1}}:{{key_2}}:d_a_f:ttl</td>
+                            <td>{{c.ttl}}</td>
+                            <td>{{c.prom+c.imp+c.updt+c.ham+c.spam}}</td>
+                        </tr>
+                        <tr>
+                            {% set c = result.o_spam[key][key_1][key_2].d_a_m%}
+                            <td>o_spam:{{key}}:{{key_1}}:{{key_2}}:d_a_m:ttl</td>
+                            <td>{{c.ttl}}</td>
+                            <td>{{c.prom+c.imp+c.updt+c.ham+c.spam}}</td>
+                        </tr>
+                        <tr>
+                            {% set c = result.o_spam[key][key_1][key_2]%}
+                            <td>o_spam:{{key}}:{{key_1}}:{{key_2}}:am_ttl</td>
+                            <td>{{c.am_ttl}}</td>
+                            <td>{{c.d_a_f.ttl+c.d_a_m.ttl}}</td>
+                        </tr>
+                    {%endfor%}
+                    {% set c = result.o_spam[key][key_1]%}
+                    <tr>
+                        <td>o_spam:{{key}}:{{key_1}}:am_ham</td>
+                        <td>{{c.am_ham}}</td>
+                    </tr>
+                    <tr>
+                        <td>o_spam:{{key}}:{{key_1}}:am_spam</td>
+                        <td>{{c.am_spam}}</td>
+                    </tr>
+                    <tr>
+                        <td>o_spam:{{key}}:{{key_1}}:am_ttl</td>
+                        <td>{{c.am_ttl}}</td>
+                        <td>{{c.am_prom.am_ttl+c.am_updt.am_ttl+c.am_imp.am_ttl+c.am_spam+c.am_ham}}</td>
+                    </tr>
+                    <tr>
+                        <td>o_spam:{{key}}:{{key_1}}:ttl</td>
+                        <td>{{c.ttl}}</td>
+                        <td>{{c.am_prom.ttl+c.am_updt.ttl+c.am_imp.ttl+c.am_spam+c.am_ham}}</td>
+                    </tr>
+                {%endfor%}
+                {%set c = result.o_spam[key]%}
+                <tr>
+                    <td>o_spam:{{key}}:am_ttl</td>
+                    <td>{{c.am_ttl}}</td>
+                    <td>{{c.sm_spam.am_ttl+c.sm_ham.am_ttl}}</td>
+                </tr>
+                <tr>
+                    <td>o_spam:{{key}}:ttl</td>
+                    <td>{{c.ttl}}</td>
+                    <td>{{c.sm_spam.ttl+c.sm_ham.ttl}}</td>
+                </tr>
+            </table>
+        </td>
+        {%endfor%}
+    </tr>
+</table>
+<table>
+    <tr>
+        {%for key in ['o_prom', 'o_updt', 'o_imp']%}
+        <td>
+            <table border="1">
+                <tr>
+                    {% set c = result[key].d_a_f%}
+                    <td>{{key}}:d_a_f:ttl</td>
+                    <td>{{c.ttl}}</td>
+                    <td>{{c.prom+c.imp+c.updt+c.ham+c.spam}}</td>
+                </tr>
+                <tr>
+                    {% set c = result[key].d_a_m%}
+                    <td>{{key}}:d_a_m:ttl</td>
+                    <td>{{c.ttl}}</td>
+                    <td>{{c.prom+c.imp+c.updt+c.ham+c.spam}}</td>
+                </tr>
+                {% set c = result[key]%}
+                <tr>
+                    <td>{{key}}:ttl</td>
+                    <td>{{c.ttl}}</td>
+                </tr>
+                <tr>
+                    <td>{{key}}:am_ttl</td>
+                    <td>{{c.am_ttl}}</td>
+                    <td>{{c.d_a_m.ttl+c.d_a_f.ttl+c.ttl}}</td>
+                </tr>
+            </table>
+        </td>
+        {%endfor%}
+        <td>
+            <table border="1">
+                {% set c = result.o_spam%}
+                <tr>
+                    <td>o_spam:ttl</td>
+                    <td>{{c.ttl}}</td>
+                    <td>{{c.s_c.ttl+c.f_a.ttl+c.f_c.ttl+c.d_c.ttl}}</td>
+                </tr>
+                <tr>
+                    <td>o_spam:am_ttl</td>
+                    <td>{{c.am_ttl}}</td>
+                    <td>{{c.s_c.am_ttl+c.f_a.am_ttl+c.f_c.am_ttl+c.d_c.am_ttl+c.o_spam_ttl}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table border="1">
+                <tr>
+                    <td>o_ham</td>
+                    <td>{{result.o_ham}}</td>
+                </tr>
+                <tr>
+                    <td>o_unable_to_inbox</td>
+                    <td>{{result.o_unable_to_inbox}}</td>
+                </tr>
+                <tr>
+                    <td>o_spam</td>
+                    <td>{{result.o_spam.o_spam_ttl}}</td>
+                </tr>
+                <tr>
+                    <td>am_ttl</td>
+                    <td>{{result.am_ttl}}</td>
+                    <td>
+                        {{result.o_spam.am_ttl+result.o_prom.am_ttl+result.o_updt.am_ttl+result.o_imp.am_ttl+result.o_ham}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

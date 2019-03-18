@@ -1,0 +1,38 @@
+{
+  "mongodb": {
+    "host": "ip",
+    "port": 27017,
+    "db": "inboxer",
+    "user": "inboxeruser",
+    "password": "password"
+  },
+  "redis": {
+    "host": "ip",
+    "port": 6380,
+    "db": 0,
+    "auth": true,
+    "password": "password"
+  },
+  "rabbitmq": {
+    "host": "ip",
+    "port": 5672,
+    "db": "Inboxer_inReq",
+    "user": "test1",
+    "password": "test1",
+    "sendMailUrl": "url",
+    "sendReportUrl": "url2"
+  },
+  "Api_Key": "zxoknKLJlkjllKJ123KLJlk8787o",
+  "config": {
+    "img_ratio": 95,
+    "text_ratio": 5,
+    "seed_list_limit": 15,
+    "seed_list_limit_testing": 5,
+    "seed_last_update_time": 120,
+    "intial_sleep_time": 8,
+    "sleep_time": 5,
+    "inbox": 80,
+    "inbox_test": 100,
+    "less_avg_count": 70
+  }
+}

@@ -1,0 +1,11 @@
+apps:
+  - script : ./processes/version_1.1/new_predictor.py
+    name   : Inboxer_v1_1
+    watch  : false
+    autorestart: false
+    restart_delay: 4000
+    kill_timeout: 10000
+    interpreter:  /home/kamesh/.virtualenvs/inboxer/bin/python
+#    env:
+#      config: 41
+#      partition: 1, 2

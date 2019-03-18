@@ -1,0 +1,18 @@
+"deleted data":{
+    "mongo":{
+    "collections":{
+            terms,
+            user_term_counts,
+            item_similarity
+    }},
+    "redis":{
+        term_ids:{"key":"num"},#key-value
+        term_scores:{"key":"term_scores"}#hash map
+        past_history:{"key":clId+":urs:"+uId} #sorted set
+
+    },
+    "elastic search":{
+        "global_words":{"index":clId},
+        "term_related_terms":{"index":"term:"+termId}
+    }
+}
