@@ -10,7 +10,7 @@ humanfriendly==4.4.1
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
-lxml==4.1.1
+lxml==4.6.3
 MarkupSafe==1.0
 monotonic==1.4
 nltk==3.2.5
